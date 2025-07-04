@@ -1,0 +1,104 @@
+template {
+  name "Go CLI Tool Development"
+  description "Create a robust command-line interface tool using Go with proper structure, configuration, and best practices"
+  version "1.0.0"
+  category "cli"
+  
+  author {
+    name "Go Community"
+    email "go@claude.ai"
+  }
+  
+  variables {
+    tool_name {
+      description "Name of the CLI tool"
+      required true
+      type "string"
+      example "my-cli-tool"
+    }
+    module_name {
+      description "Go module name"
+      required true
+      type "string"
+      example "github.com/user/my-cli-tool"
+    }
+    include_server {
+      description "Include HTTP server subcommand"
+      required false
+      type "boolean"
+      default false
+    }
+    config_format {
+      description "Configuration file format"
+      required false
+      type "string"
+      default "yaml"
+      options "yaml" "json" "toml"
+    }
+    logging_framework {
+      description "Logging framework to use"
+      required false
+      type "string"
+      default "logrus"
+      options "logrus" "zap" "slog"
+    }
+    include_database {
+      description "Include database configuration"
+      required false
+      type "boolean"
+      default false
+    }
+    release_automation {
+      description "Include GoReleaser for automated releases"
+      required false
+      type "boolean"
+      default true
+    }
+  }
+  
+  permissions {
+    "Read"
+    "Write"
+    "Bash"
+    "Glob"
+  }
+  
+  examples {
+    simple_tool {
+      description "Simple CLI utility"
+      variables {
+        tool_name "file-processor"
+        module_name "github.com/user/file-processor"
+        include_server false
+        config_format "yaml"
+        logging_framework "logrus"
+        include_database false
+        release_automation true
+      }
+    }
+    server_tool {
+      description "CLI tool with HTTP server"
+      variables {
+        tool_name "api-gateway"
+        module_name "github.com/company/api-gateway"
+        include_server true
+        config_format "yaml"
+        logging_framework "zap"
+        include_database true
+        release_automation true
+      }
+    }
+    enterprise_tool {
+      description "Enterprise CLI application"
+      variables {
+        tool_name "deployment-manager"
+        module_name "github.com/enterprise/deployment-manager"
+        include_server true
+        config_format "toml"
+        logging_framework "slog"
+        include_database true
+        release_automation true
+      }
+    }
+  }
+}
