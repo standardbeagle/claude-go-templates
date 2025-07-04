@@ -1,0 +1,96 @@
+template {
+  name "Go Wails Desktop App Setup"
+  description "Initialize a complete Wails desktop application project with Go backend and modern web frontend"
+  version "1.0.0"
+  category "wails"
+  
+  author {
+    name "Go Community"
+    email "go@claude.ai"
+  }
+  
+  variables {
+    app_name {
+      description "Name of the Wails application"
+      required true
+      type "string"
+      example "my-desktop-app"
+    }
+    frontend_template {
+      description "Frontend framework template to use"
+      required false
+      type "string"
+      default "react-ts"
+      options "react" "react-ts" "vue" "vue-ts" "svelte" "svelte-ts" "preact" "preact-ts" "lit" "lit-ts" "vanilla" "vanilla-ts"
+    }
+    target_platforms {
+      description "Target platforms for the application"
+      required false
+      type "array"
+      default ["windows", "darwin", "linux"]
+      options "windows" "darwin" "linux"
+    }
+    include_testing {
+      description "Include testing framework setup"
+      required false
+      type "boolean"
+      default true
+    }
+    enable_headless_mode {
+      description "Support headless mode for testing"
+      required false
+      type "boolean"
+      default true
+    }
+    state_management {
+      description "Frontend state management solution"
+      required false
+      type "string"
+      default "zustand"
+      options "zustand" "redux" "context-api" "none"
+    }
+  }
+  
+  permissions {
+    "Read"
+    "Write"
+    "Bash"
+    "Glob"
+  }
+  
+  examples {
+    business_app {
+      description "Business desktop application"
+      variables {
+        app_name "inventory-manager"
+        frontend_template "react-ts"
+        target_platforms ["windows", "darwin"]
+        include_testing true
+        enable_headless_mode true
+        state_management "zustand"
+      }
+    }
+    simple_tool {
+      description "Simple utility tool"
+      variables {
+        app_name "file-converter"
+        frontend_template "vanilla-ts"
+        target_platforms ["windows", "darwin", "linux"]
+        include_testing false
+        enable_headless_mode false
+        state_management "none"
+      }
+    }
+    data_visualization {
+      description "Data visualization dashboard"
+      variables {
+        app_name "analytics-dashboard"
+        frontend_template "react-ts"
+        target_platforms ["darwin", "linux"]
+        include_testing true
+        enable_headless_mode true
+        state_management "redux"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+repository {
+  name "Claude Go Templates"
+  description "Go-specific templates for Claude Code development with Wails, CLI tools, and Go best practices"
+  version "1.0.0"
+  
+  maintainer {
+    name "Go Community"
+    email "go@claude.ai"
+    url "https://github.com/claude-go-community"
+  }
+  
+  categories {
+    wails {
+      description "Wails desktop application templates"
+      count 3
+    }
+    cli {
+      description "Command-line interface tools"
+      count 2
+    }
+    web {
+      description "Web services and APIs"
+      count 2
+    }
+    testing {
+      description "Testing and quality assurance"
+      count 3
+    }
+  }
+}
